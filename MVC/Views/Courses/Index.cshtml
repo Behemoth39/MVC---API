@@ -14,9 +14,9 @@
         <ul>
             @foreach (var course in Model)
             {
-                <li><a asp-action="details" asp-route-courseId="@course.Id">
+                <p><a asp-action="details" asp-route-courseId="@course.Id">
                         @course.CourseTitle - @course.CourseNumber
-                    </a></li>
+                </a></p>
             }
         </ul>
     </div>
