@@ -1,0 +1,32 @@
+@model WestCoastEducation.web.ViewModels.Account.RegisterUserViewModel
+@{
+    ViewBag.Pagetitle = "Register acount";
+}
+
+<section>
+    <h1 class="table-h1">Registrera dig</h1>
+    <form action="register" method="post">
+        <div>
+            <div class="form-spacing">
+                <label asp-for="Email"></label>
+                <input asp-for="Email">
+                <span class="error" asp-validation-for="Email"></span>
+            </div>
+            <div class="form-spacing">
+                <label asp-for="Password"></label>
+                <input asp-for="Password">
+                <span class="error" asp-validation-for="Password"></span>
+            </div>
+            <div class="form-spacing">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword">
+                <span class="error" asp-validation-for="ConfirmPassword"></span>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="btn-form">Registrera</button>
+                <a asp-action="index" asp-controller="Home" class="btn-form">Avbryt</a>
+            </div>
+            <div class="error" asp-validation-summary="All"></div>
+        </div>
+    </form>
+</section>

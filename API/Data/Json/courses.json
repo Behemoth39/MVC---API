@@ -1,0 +1,29 @@
+[
+  {
+    "Id": 1,
+    "teacherId": 1,
+    "status": 0,
+    "CourseNumber": "WE12B",
+    "CourseTitle": "WEBDEV",
+    "CourseStartDate": "2022-02-16",
+    "CourseEndDate": "2025-06-20"
+  },
+  {
+    "Id": 2,
+    "teacherId": 2,
+    "status": 0,
+    "CourseNumber": "TE660",
+    "CourseTitle": "TECH",
+    "CourseStartDate": "2022-02-16",
+    "CourseEndDate": "2024-06-20"
+  },
+  {
+    "Id": 3,
+    "teacherId": 3,
+    "status": 0,
+    "CourseNumber": "VV88D",
+    "CourseTitle": "VVS",
+    "CourseStartDate": "2022-06-18",
+    "CourseEndDate": "2024-06-20"
+  }
+]

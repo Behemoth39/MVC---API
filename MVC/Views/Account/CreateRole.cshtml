@@ -1,0 +1,23 @@
+@model WestCoastEducation.web.ViewModels.Account.Admin.RoleViewModel
+
+@{
+    ViewBag.Pagetitle = "Create role";
+}
+
+<section>
+    <h1 class="table-h1">Skapa ny roll</h1>
+    <form asp-action="CreateRole">
+        <div>
+            <div class="form-spacing">
+                <label asp-for="RoleName"></label>
+                <input asp-for="RoleName">
+                <span class="error" asp-validation-for="RoleName"></span>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="btn-form">Spara</button>
+                <a asp-action="index" asp-controller="Home" class="btn-form">Avbryt</a>
+            </div>
+            <div class="error" asp-validation-summary="All"></div>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,41 @@
+.buttons {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+}
+.btn-table{  
+  display: inline-block;  
+  border: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 100%;  
+  text-align: center;
+  padding: 10px 0px;  
+  background-color: navy;
+  color: white;
+  text-decoration: none;
+}
+.btn-table:hover {
+  opacity: 0.9;
+  font-weight: bold;
+}
+.btn-form{   
+  display: inline-block;  
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 100%;  
+  text-align: center;
+  padding: 10px 0px;  
+  background-color: navy;
+  color: white;
+  text-decoration: none; 
+}
+.btn-form:hover {
+  opacity: 0.9;
+  font-weight: bold;
+  cursor:pointer;
+}
+.error{
+  color: red;
+}

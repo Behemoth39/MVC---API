@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/css/banner-menu.css">
+    <link rel="stylesheet" href="~/css/table.css">
+    <link rel="stylesheet" href="~/css/form.css">
+    <link rel="stylesheet" href="~/css/utility.css">
+    <script src="https://kit.fontawesome.com/1e64290bfc.js" crossorigin="anonymous"></script>
+    <title>@ViewBag.Pagetitle - WestCoastEducation</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="banner-menu">
+            <div class="banner-menu-links">
+                <div>
+                    <a asp-controller="home" asp-action="Index">Hem</a>
+                </div>
+                <div>
+                    <a asp-controller="courses" asp-action="Index">Kurser</a>
+                </div>
+                @if (User.Identity.IsAuthenticated == true)
+                {
+                    <div>
+                        <a asp-action="Index" asp-controller="CourseAdmin">Redigera kurser</a>
+                    </div>
+                }
+                <div>
+                    @if (User.Identity is null || User.Identity.IsAuthenticated == false)
+                    {
+                        <a asp-action="Login" asp-controller="Account" class="login-btn">Logga in</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Logout" asp-controller="Account" class="login-btn">Logga ut</a>
+                    }
+                </div>
+            </div>
+            <div class="banner-site-name">
+                <p>West Coast Education</p>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+</body>
+
+</html>

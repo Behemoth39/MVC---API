@@ -1,0 +1,13 @@
+@{
+    ViewBag.Pagetitle = "Details";
+}
+<section>
+    <h1>Kursinfo - @Model!.CourseTitle</h1>
+    <div>
+        <p>Kurstitle - @Model.CourseTitle</p>
+        <p>Kursnummer - @Model.CourseNumber</p>
+        <p>Kursstart - @Model.CourseStartDate</p>
+        <p>Kurslängd - @Model.CourseEndDate</p>
+    </div>
+    <a asp-action="Index">Tillbaka</a>
+</section>

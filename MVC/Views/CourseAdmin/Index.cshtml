@@ -1,0 +1,46 @@
+﻿@model IList<WestCoastEducation.web.ViewModels.CourseListViewModel>
+@{
+    ViewBag.Pagetitle = "Course Admin";
+}
+<section>
+    <div class="table-container">
+        <h1 class="table-h1">Kurser</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Kurs</th>
+                    <th>Kurs Nr</th>
+                    <th>Kurstitel</th>
+                    <th>Kursstart</th>
+                    <th>Kurslängd</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var course in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="icon" asp-action="Edit" asp-controller=CourseAdmin
+                            asp-route-courseId="@course.Id">
+                                <i class="fa-solid fa-pen-to-square"></i></a>
+                        </td>                        
+                        <td>@course.CourseNumber</td>
+                        <td>@course.CourseTitle</td>
+                        <td>@course.CourseStartDate</td>
+                        <td>@course.CourseEndDate Veckor</td>
+                        <td>
+                            <a class="icon" asp-action="Delete" asp-controller=CourseAdmin
+                            asp-route-courseId="@course.Id">
+                                <i class="fa-solid fa-delete-left"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <a class="btn-table" asp-action=create asp-controller="CourseAdmin">Lägg till kurs</a>
+        </div>
+    </div>
+</section>

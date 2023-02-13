@@ -1,0 +1,35 @@
+.banner-menu {
+  display: flex;
+  height: 50px;
+  background-color: white;
+  border-top: 4px solid lightseagreen;
+  border-bottom: 1px solid lightgray;
+}
+.banner-menu-links {
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  font-size: 125%;
+}
+.banner-menu-links > div {
+  padding-left: 25px;
+  text-align: center;
+  min-width: fit-content;
+  margin: auto;
+}
+.banner-menu-links > div a {
+  color: black;
+  text-decoration: none;
+}
+.banner-site-name{  
+  margin-left: auto; 
+  margin-right: 40px;
+  display: flex;    
+  font-size: 140%;      
+}
+.banner-site-name > p {    
+  margin: auto;  
+}
+.login-btn{
+  border-bottom: solid 1px black;
+}

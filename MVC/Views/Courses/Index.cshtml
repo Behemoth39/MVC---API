@@ -1,0 +1,23 @@
+﻿@model IList<WestCoastEducation.web.ViewModels.CourseListViewModel>
+
+@{
+    ViewBag.Pagetitle = "Courses";
+}
+
+<section>
+    <div>
+        <h1>Kurslista</h1>
+        <p>Här skulle det kunna ligga en lista av alla kurser med länkar till mer info
+            istället för en tabell.<br>
+            Men detta ser inte snyggt ut.......
+        </p>
+        <ul>
+            @foreach (var course in Model)
+            {
+                <li><a asp-action="details" asp-route-courseId="@course.Id">
+                        @course.CourseTitle - @course.CourseNumber
+                    </a></li>
+            }
+        </ul>
+    </div>
+</section>

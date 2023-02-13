@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "age": 30,
+    "firstName": "Emma",
+    "lastName": "Gran",
+    "email": "Emma-Gran@Teachermail.com",
+    "phone": "0732647422"
+  },
+  {
+    "Id": 2,
+    "age": 28,
+    "firstName": "Johan",
+    "lastName": "Svensson",
+    "email": "Johan-Svensson@Teachermail.com",
+    "phone": "07345123422"
+  },
+  {
+    "Id": 3,
+    "age": 42,
+    "firstName": "Anders",
+    "lastName": "Hansson",
+    "email": "Ander-Hansson@Teachermail.com",
+    "phone": "0739618422"
+  }
+]

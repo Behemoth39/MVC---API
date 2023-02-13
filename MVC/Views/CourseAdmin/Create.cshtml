@@ -1,0 +1,40 @@
+@model WestCoastEducation.web.ViewModels.CoursePostViewModel
+@{
+    ViewBag.Pagetitle = "Course-panel";
+}
+<section>
+    <h1 class="table-h1">Lägg till kurser</h1>
+    <form asp-action="create" asp-controller="CourseAdmin" method="post">
+        <div class="form-spacing">
+            <label asp-for="CourseName"></label>
+            <input asp-for="CourseName">
+            <span class="error" asp-validation-for="CourseName"></span>
+        </div>
+        <div class="form-spacing">
+            <label asp-for="CourseNumber"></label>
+            <input asp-for="CourseNumber">
+            <span class="error" asp-validation-for="CourseNumber"></span>
+        </div>
+        <div class="form-spacing">
+            <label asp-for="CourseTitle"></label>
+            <input asp-for="CourseTitle">
+            <span class="error" asp-validation-for="CourseTitle"></span>
+        </div>
+        <div class="form-spacing">
+            <label asp-for="CourseStart"></label>
+            <input asp-for="CourseStart">
+            <span class="error" asp-validation-for="CourseStart"></span>
+        </div>
+        <div class="form-spacing">
+            <label asp-for="CourseLenght"></label>
+            <input asp-for="CourseLenght">
+            <span class="error" asp-validation-for="CourseLenght"></span>
+        </div>
+        <div>
+            <div class="buttons">
+                <button type="submit" class="btn-form">Spara</button>
+                <a asp-action="index" asp-controller="CourseAdmin" class="btn-form">Avbryt</a>
+            </div>
+        </div>
+    </form>
+</section>
