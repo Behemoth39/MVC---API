@@ -22,6 +22,7 @@ public class TeacherController : ControllerBase
         var result = await _context.Teachers
         .Select(t => new TeacherListViewModel
         {
+            Id = t.Id,
             Age = t.Age,
             FirstName = t.FirstName,
             LastName = t.LastName,

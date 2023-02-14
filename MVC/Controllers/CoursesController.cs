@@ -1,5 +1,4 @@
 using System.Text.Json;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WestCoastEducation.web.ViewModels;
 namespace WestCoastEducation.web.Controllers;

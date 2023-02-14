@@ -1,0 +1,15 @@
+@{
+    ViewBag.Pagetitle = "Details";
+}
+<section>
+    <h1>@Model!.FirstName - @Model!.LastName </h1>
+    <p>Denna sidan behöver en annan layout</p>
+    <div>
+        <p>Ålder - @Model.Age</p>
+        <p>Förnamne - @Model.FirstName</p>
+        <p>Efternamn - @Model.LastName</p>
+        <p>Email - @Model.Email</p>
+        <p>Telefonnummer - @Model.Phone</p>                          
+    </div>
+    <a asp-action="Index">Tillbaka</a>
+</section>

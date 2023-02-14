@@ -77,7 +77,7 @@ public class CourseAdminController : Controller
         using var client = _httpClient.CreateClient();
         var response = await client.GetAsync($"{_baseUrl}/courses/{courseId}");
 
-        return View("Edit");
+        return View("Edit"); // model, men från vart?
     }
 
     [HttpPost("edit/{courseId}")]

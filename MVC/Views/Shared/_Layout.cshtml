@@ -24,6 +24,12 @@
                 <div>
                     <a asp-controller="courses" asp-action="Index">Kurser</a>
                 </div>
+                <div>
+                    <a asp-controller="teachers" asp-action="Index">Lärare</a>
+                </div>
+                <div>
+                    <a asp-controller="students" asp-action="Index">Studenter</a>
+                </div>
                 @if (User.Identity.IsAuthenticated == true)
                 {
                     <div>
