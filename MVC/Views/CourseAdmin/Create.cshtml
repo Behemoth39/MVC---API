@@ -4,12 +4,7 @@
 }
 <section>
     <h1 class="table-h1">Lägg till kurser</h1>
-    <form asp-action="create" asp-controller="CourseAdmin" method="post">
-        <div class="form-spacing">
-            <label asp-for="CourseName"></label>
-            <input asp-for="CourseName">
-            <span class="error" asp-validation-for="CourseName"></span>
-        </div>
+    <form asp-action="create" asp-controller="CourseAdmin" method="post">        
         <div class="form-spacing">
             <label asp-for="CourseNumber"></label>
             <input asp-for="CourseNumber">
@@ -21,14 +16,14 @@
             <span class="error" asp-validation-for="CourseTitle"></span>
         </div>
         <div class="form-spacing">
-            <label asp-for="CourseStart"></label>
-            <input asp-for="CourseStart">
-            <span class="error" asp-validation-for="CourseStart"></span>
+            <label asp-for="CourseStartDate"></label>
+            <input asp-for="CourseStartDate">
+            <span class="error" asp-validation-for="CourseStartDate"></span>
         </div>
         <div class="form-spacing">
-            <label asp-for="CourseLenght"></label>
-            <input asp-for="CourseLenght">
-            <span class="error" asp-validation-for="CourseLenght"></span>
+            <label asp-for="CourseEndDate"></label>
+            <input asp-for="CourseEndDate">
+            <span class="error" asp-validation-for="CourseEndDate"></span>
         </div>
         <div>
             <div class="buttons">

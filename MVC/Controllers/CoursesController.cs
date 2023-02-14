@@ -34,7 +34,7 @@ public class CoursesController : Controller
         return View("Index", courses);
     }
 
-    [Route("course/{courseId}")] //används ej än    
+    [Route("course/{courseId}")]
     public async Task<IActionResult> Details(int courseId)
     {
         using var client = _httpClient.CreateClient();
