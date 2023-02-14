@@ -35,6 +35,12 @@
                     <div>
                         <a asp-action="Index" asp-controller="CourseAdmin">Redigera kurser</a>
                     </div>
+                    <div>
+                        <a asp-action="Index" asp-controller="TeacherAdmin">Redigera Lärare</a>
+                    </div>                
+                    <div>
+                        <a asp-action="Index" asp-controller="StudentAdmin">Redigera Studenter</a>
+                    </div>
                 }
                 <div>
                     @if (User.Identity is null || User.Identity.IsAuthenticated == false)

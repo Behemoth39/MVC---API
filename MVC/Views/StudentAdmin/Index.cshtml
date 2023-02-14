@@ -1,0 +1,47 @@
+﻿@model IList<WestCoastEducation.web.ViewModels.PersonViewModel>
+@{
+    ViewBag.Pagetitle = "Student Admin";
+}
+<section>
+    <div class="table-container">
+        <h1 class="table-h1">Studenter</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Ålder</th>
+                    <th>Förnamn</th>
+                    <th>Efternamn</th>
+                    <th>Email</th>
+                    <th>Telefonnummer</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="icon" asp-action="Edit" asp-controller=StudentAdmin
+                            asp-route-studentId="@student.Id">
+                                <i class="fa-solid fa-pen-to-square"></i></a>
+                        </td>                        
+                        <td>@student.Age</td>
+                        <td>@student.FirstName</td>
+                        <td>@student.LastName</td>
+                        <td>@student.Email</td>
+                        <td>@student.Phone</td>
+                        <td>
+                            <a class="icon" asp-action="Delete" asp-controller=StudentAdmin
+                            asp-route-studentId="@student.Id">
+                                <i class="fa-solid fa-delete-left"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <a class="btn-table" asp-action=create asp-controller="StudentAdmin">Lägg till Student</a>
+        </div>
+    </div>
+</section>

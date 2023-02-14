@@ -1,0 +1,41 @@
+@model MVC.ViewModels.StudentPostViewModel // måste visa värden som finns 
+@{
+    ViewBag.Pagetitle = "Student-panel";
+}
+<section>
+    <h1 class="table-h1">Lägg till Student</h1>
+    <form asp-action="create" asp-controller="StudentAdmin" method="post">       
+        <div class="form-spacing">
+            <label asp-for="Age"></label>
+            <input asp-for="Age">            
+            <span class="error" asp-validation-for="Age"></span>
+        </div>
+        <div class="form-spacing">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName">
+            <span class="error" asp-validation-for="FirstName"></span>
+        </div>
+        <div class="form-spacing">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName">
+            <span class="error" asp-validation-for="LastName"></span>
+        </div>
+        <div class="form-spacing">
+            <label asp-for="Email"></label>
+            <input asp-for="Email">
+            <span class="error" asp-validation-for="Email"></span>
+        </div>
+         <div class="form-spacing">
+            <label asp-for="Phone"></label>
+            <input asp-for="Phone">
+            <span class="error" asp-validation-for="Phone"></span>
+        </div>
+        <div>
+            <div class="buttons">
+                <button type="submit" class="btn-form">Spara</button>
+                <a asp-action="index" asp-controller="StudentAdmin" class="btn-form">Avbryt</a>
+            </div>
+        </div>
+    </form>
+</section>
+
