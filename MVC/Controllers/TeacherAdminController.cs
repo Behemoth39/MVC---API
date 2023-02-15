@@ -1,23 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
 using WestCoastEducation.web.Models;
-using WestCoastEducation.web.ViewModels;
+using MVC.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using System.Text.Json;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
+using WestCoastEducation.web.ViewModels;
 
 namespace WestCoastEducation.web.Controllers;
 
-[Route("course/admin")]
+[Route("teacher/admin")]
 //[Authorize(Roles = "Admin")]
-public class CourseAdminController : Controller
+public class TeacherAdminController : Controller
 {
     private readonly IConfiguration _config;
     private readonly string _baseUrl;
     private readonly JsonSerializerOptions _options;
     private readonly IHttpClientFactory _httpClient;
 
-    public CourseAdminController(IConfiguration config, IHttpClientFactory httpClient)
+    public TeacherAdminController(IConfiguration config, IHttpClientFactory httpClient)
     {
         _httpClient = httpClient;
         _config = config;
@@ -28,41 +29,42 @@ public class CourseAdminController : Controller
     public async Task<IActionResult> Index()
     {
         using var client = _httpClient.CreateClient();
-        var response = await client.GetAsync($"{_baseUrl}/courses");
+        var response = await client.GetAsync($"{_baseUrl}/teachers");
 
         if (!response.IsSuccessStatusCode) return Content("Ett fel har uppstått!");
 
         var json = await response.Content.ReadAsStringAsync();
 
-        var courses = JsonSerializer.Deserialize<IList<CourseListViewModel>>(json, _options);
+        var teachers = JsonSerializer.Deserialize<IList<PersonViewModel>>(json, _options);
 
-        return View("Index", courses);
+        return View("Index", teachers);
     }
 
     [HttpGet("create")]
     public IActionResult Create()
     {
-        var course = new CoursePostViewModel();
+        var course = new TeacherPostViewModel();
         return View("Create", course);
     }
 
     [HttpPost("create")]
-    public async Task<IActionResult> Create(CoursePostViewModel course)
+    public async Task<IActionResult> Create(TeacherPostViewModel teacher)
     {
-        if (!ModelState.IsValid) return View("Create", course);
+        if (!ModelState.IsValid) return View("Create", teacher);
 
         var model = new
         {
-            CourseNumber = course.CourseNumber,
-            CourseTitle = course.CourseTitle,
-            CourseStartDate = course.CourseStartDate,
-            CourseEndDate = course.CourseEndDate
+            Age = teacher.Age,
+            FirstName = teacher.FirstName,
+            LastName = teacher.LastName,
+            Email = teacher.Email,
+            Phone = teacher.Phone
         };
 
         using var client = _httpClient.CreateClient();
         var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, Application.Json);
 
-        var response = await client.PostAsync($"{_baseUrl}/courses", content);
+        var response = await client.PostAsync($"{_baseUrl}/teachers", content);
 
         if (response.IsSuccessStatusCode)
         {
@@ -71,35 +73,33 @@ public class CourseAdminController : Controller
         return Content("Done!");
     }
 
-    [HttpGet("edit/{courseId}")]
-    public async Task<IActionResult> Edit(int courseId) // skickar inte tillbaka information
+    [HttpGet("edit/{teacherId}")]
+    public async Task<IActionResult> Edit(int teacherId) // skickar inte tillbaka information
     {
         using var client = _httpClient.CreateClient();
-        var response = await client.GetAsync($"{_baseUrl}/courses/{courseId}");
+        var response = await client.GetAsync($"{_baseUrl}/teachers/{teacherId}");
 
-        var json = await response.Content.ReadAsStringAsync();
-        var courses = JsonSerializer.Deserialize<CoursePostViewModel>(json, _options);
-
-        return View("Edit", courses); // model, men från vart?
+        return View("Edit"); // model, men från vart?
     }
 
-    [HttpPost("edit/{courseId}")]
-    public async Task<IActionResult> Edit(int courseId, CoursePostViewModel course)
+    [HttpPost("edit/{teacherId}")]
+    public async Task<IActionResult> Edit(int teacherId, TeacherPostViewModel teacher)
     {
-        if (!ModelState.IsValid) return View("Edit", course);
+        if (!ModelState.IsValid) return View("Edit", teacher);
 
         var model = new
         {
-            CourseNumber = course.CourseNumber,
-            CourseTitle = course.CourseTitle,
-            CourseStartDate = course.CourseStartDate,
-            CourseEndDate = course.CourseEndDate
+            Age = teacher.Age,
+            FirstName = teacher.FirstName,
+            LastName = teacher.LastName,
+            Email = teacher.Email,
+            Phone = teacher.Phone
         };
 
         using var client = _httpClient.CreateClient();
         var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, Application.Json);
 
-        var response = await client.PutAsync($"{_baseUrl}/courses/{courseId}", content);
+        var response = await client.PutAsync($"{_baseUrl}/teachers/{teacherId}", content);
 
         if (response.IsSuccessStatusCode)
         {
@@ -108,12 +108,12 @@ public class CourseAdminController : Controller
         return Content("Done!");
     }
 
-    [Route("delete/{courseId}")]
-    public async Task<IActionResult> Delete(int courseId)
+    [Route("delete/{teacherId}")]
+    public async Task<IActionResult> Delete(int teacherId)
     {
         using var client = _httpClient.CreateClient();
 
-        var response = await client.DeleteAsync($"{_baseUrl}/courses/{courseId}");
+        var response = await client.DeleteAsync($"{_baseUrl}/teachers/{teacherId}");
         if (response.IsSuccessStatusCode)
         {
             return RedirectToAction(nameof(Index));
