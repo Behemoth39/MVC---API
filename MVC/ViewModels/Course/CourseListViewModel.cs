@@ -1,5 +1,3 @@
-using MVC.ViewModels;
-
 namespace WestCoastEducation.web.ViewModels;
 
 public class CourseListViewModel

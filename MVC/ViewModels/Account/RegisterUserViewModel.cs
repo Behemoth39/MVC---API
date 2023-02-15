@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace WestCoastEducation.web.ViewModels.Account;
+namespace WestCoastEducation.web.ViewModels;
 
 public class RegisterUserViewModel
 {

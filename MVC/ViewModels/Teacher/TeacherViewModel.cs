@@ -1,8 +1,7 @@
-namespace MVC.ViewModels
+namespace WestCoastEducation.web.ViewModels;
+
+public class TeacherViewModel
 {
-    public class TeacherViewModel
-    {
-        public string Name { get; set; }
-        public string Email { get; set; }
-    }
+    public string Name { get; set; }
+    public string Email { get; set; }
 }

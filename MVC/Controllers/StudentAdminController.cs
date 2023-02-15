@@ -1,7 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using WestCoastEducation.web.Models;
-using MVC.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using System.Text.Json;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
@@ -43,12 +40,12 @@ public class StudentAdminController : Controller
     [HttpGet("create")]
     public IActionResult Create()
     {
-        var course = new StudentPostViewModel();
+        var course = new PersonPostViewModel();
         return View("Create", course);
     }
 
     [HttpPost("create")]
-    public async Task<IActionResult> Create(StudentPostViewModel student)
+    public async Task<IActionResult> Create(PersonPostViewModel student)
     {
         if (!ModelState.IsValid) return View("Create", student);
 
@@ -74,16 +71,19 @@ public class StudentAdminController : Controller
     }
 
     [HttpGet("edit/{studentId}")]
-    public async Task<IActionResult> Edit(int studentId) // skickar inte tillbaka information
+    public async Task<IActionResult> Edit(int studentId)
     {
         using var client = _httpClient.CreateClient();
         var response = await client.GetAsync($"{_baseUrl}/students/{studentId}");
 
-        return View("Edit"); // model, men från vart?
+        var json = await response.Content.ReadAsStringAsync();
+        var student = JsonSerializer.Deserialize<PersonPostViewModel>(json, _options);
+
+        return View("Edit", student);
     }
 
     [HttpPost("edit/{studentId}")]
-    public async Task<IActionResult> Edit(int studentId, StudentPostViewModel student)
+    public async Task<IActionResult> Edit(int studentId, PersonPostViewModel student)
     {
         if (!ModelState.IsValid) return View("Edit", student);
 

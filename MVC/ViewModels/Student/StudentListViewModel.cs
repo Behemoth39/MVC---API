@@ -1,9 +1,7 @@
-using WestCoastEducation.web.ViewModels;
+namespace WestCoastEducation.web.ViewModels;
 
-namespace MVC.ViewModels
+public class StudentListViewModel : PersonViewModel
 {
-    public class StudentListViewModel : PersonViewModel
-    {
-        public string Course { get; set; }
-    }
+    public string Course { get; set; }
 }
+

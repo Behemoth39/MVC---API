@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using WestCoastEducation.web.Models;
-using WestCoastEducation.web.ViewModels.Account;
-using WestCoastEducation.web.ViewModels.Account.Admin;
+using WestCoastEducation.web.ViewModels;
 
 namespace WestCoastEducation.web.Controllers;
 

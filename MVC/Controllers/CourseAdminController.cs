@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using WestCoastEducation.web.Models;
 using WestCoastEducation.web.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using System.Text.Json;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
@@ -72,7 +70,7 @@ public class CourseAdminController : Controller
     }
 
     [HttpGet("edit/{courseId}")]
-    public async Task<IActionResult> Edit(int courseId) // skickar inte tillbaka information
+    public async Task<IActionResult> Edit(int courseId)
     {
         using var client = _httpClient.CreateClient();
         var response = await client.GetAsync($"{_baseUrl}/courses/{courseId}");
@@ -80,7 +78,7 @@ public class CourseAdminController : Controller
         var json = await response.Content.ReadAsStringAsync();
         var courses = JsonSerializer.Deserialize<CoursePostViewModel>(json, _options);
 
-        return View("Edit", courses); // model, men från vart?
+        return View("Edit", courses);
     }
 
     [HttpPost("edit/{courseId}")]

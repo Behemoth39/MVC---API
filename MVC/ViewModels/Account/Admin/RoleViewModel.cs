@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace WestCoastEducation.web.ViewModels.Account.Admin;
+namespace WestCoastEducation.web.ViewModels;
 
 public class RoleViewModel
 {
