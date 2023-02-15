@@ -1,14 +1,20 @@
+html{
+  height: 100%;
+  background: linear-gradient(0deg, rgb(255, 196, 118) 0%, rgb(255, 208, 175) 100%);
+}
 body {
   margin: 0%;
-  background-color: silver;
+  color: rgb(151, 30, 0);    
 }
-main { 
-  margin: auto;
-  max-width: 1200px;
+main {   
+  margin-top: 100px;  
   display: flex;
   flex-direction: column;
   text-align: center;
-  align-items: center;  
+  align-items: center;    
+}
+h1{
+  font-size: 50px;  
 }
 ul{
   display: inline-block;

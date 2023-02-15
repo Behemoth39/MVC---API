@@ -1,0 +1,17 @@
+.main-content { 
+  width: 100%;  
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;   
+}
+.main-content-row-1 {  
+  width: fit-content; 
+  margin-right: 10px;
+  margin-left: 0%;
+  flex-direction: row;  
+}
+.main-content-row-2 {  
+  width: 50%;  
+  height: fit-content; 
+  margin-right: 25px;  
+}

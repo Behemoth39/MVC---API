@@ -1,7 +1,11 @@
 @{
     ViewBag.Pagetitle = "Details";
 }
-<section>
+<section class="main-content">
+    <div class="main-content-row-1">   
+        <img src="~/Media/school.png" alt="School" height="800" width="800" />
+    </div>
+    <div class="main-content-row-2">
     <h1>Kursinfo - @Model!.CourseTitle</h1>
     <p>Denna sidan behöver en annan layout</p>
     <div>
@@ -12,9 +16,11 @@
         <p>Kursslut - @Model.CourseEndDate</p>
         <p>Lärare - @Model.Teacher</p>             
         <p>Studenter - @foreach (var student in Model.Students)
-            {
-                @student.Name<br>                               
-            }</p>       
+                {
+                    @student.Name
+
+                        <br>                               
+                }</p>       
     </div>
     <a asp-action="Index">Tillbaka</a>
 </section>
