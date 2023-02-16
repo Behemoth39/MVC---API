@@ -1,4 +1,4 @@
-﻿@model IList<WestCoastEducation.web.ViewModels.PersonViewModel>
+﻿@model IList<WestCoastEducation.web.ViewModels.TeacherListViewModel>
 @{
     ViewBag.Pagetitle = "Teacher Admin";
 }
@@ -14,6 +14,7 @@
                     <th>Efternamn</th>
                     <th>Email</th>
                     <th>Telefonnummer</th>
+                    <th>Kompetenser</th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,7 +31,12 @@
                         <td>@teacher.FirstName</td>
                         <td>@teacher.LastName</td>
                         <td>@teacher.Email</td>
-                        <td>@teacher.Phone</td>
+                        <td>@teacher.Phone</td>                        
+                        <td>@foreach (var qualification in teacher.Qualifications)
+                                {
+                                    @qualification.Qualification                                                      
+                                }
+                        </td>
                         <td>
                             <a class="icon" asp-action="Delete" asp-controller=TeacherAdmin
                             asp-route-teacherId="@teacher.Id">
@@ -41,7 +47,7 @@
             </tbody>
         </table>
         <div>
-            <a class="btn-table" asp-action=create asp-controller="TeacherAdmin">Lägg till Student</a>
+            <a class="btn-table" asp-action=create asp-controller="TeacherAdmin">Lägg till Lärare</a>
         </div>
     </div>
 </section>

@@ -20,6 +20,7 @@ public class TeacherController : ControllerBase
     public async Task<ActionResult> List()
     {
         var result = await _context.Teachers
+        .Include(q => q.Qualifications)
         .Select(t => new TeacherListViewModel
         {
             Id = t.Id,
@@ -41,6 +42,7 @@ public class TeacherController : ControllerBase
     public async Task<ActionResult> GetById(int id)
     {
         var result = await _context.Teachers
+        .Include(q => q.Qualifications)
         .Select(t => new TeacherListViewModel
         {
             Id = t.Id,
@@ -63,6 +65,7 @@ public class TeacherController : ControllerBase
     {
         var result = await _context.Teachers
         .Include(c => c.Courses)
+        .Include(q => q.Qualifications)
         .Select(t => new TeacherListViewModel
         {
             Age = t.Age,

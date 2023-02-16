@@ -3,6 +3,8 @@ using System.Text.Json;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
 using WestCoastEducation.web.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using WestCoastEducation.web.Models;
 
 namespace WestCoastEducation.web.Controllers;
 
@@ -32,20 +34,35 @@ public class TeacherAdminController : Controller
 
         var json = await response.Content.ReadAsStringAsync();
 
-        var teachers = JsonSerializer.Deserialize<IList<PersonViewModel>>(json, _options);
+        var teachers = JsonSerializer.Deserialize<IList<TeacherListViewModel>>(json, _options);
 
         return View("Index", teachers);
     }
 
     [HttpGet("create")]
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
-        var course = new PersonPostViewModel();
-        return View("Create", course);
+        var qualificationList = new List<SelectListItem>();
+
+        using var client = _httpClient.CreateClient();
+
+        var response = await client.GetAsync($"{_baseUrl}/qualifications");
+        if (!response.IsSuccessStatusCode) return Content("Ett fel har uppstått!");
+        var json = await response.Content.ReadAsStringAsync();
+        var qualifications = JsonSerializer.Deserialize<List<QualificationModel>>(json, _options);
+
+        foreach (var qualification in qualifications)
+        {
+            qualificationList.Add(new SelectListItem { Value = qualification.Qualification, Text = qualification.Qualification });
+        }
+
+        var teacher = new TeacherPostViewModel();
+        teacher.Qualifications = qualificationList;
+        return View("Create", teacher);
     }
 
     [HttpPost("create")]
-    public async Task<IActionResult> Create(PersonPostViewModel teacher)
+    public async Task<IActionResult> Create(TeacherPostViewModel teacher)
     {
         if (!ModelState.IsValid) return View("Create", teacher);
 
@@ -55,7 +72,8 @@ public class TeacherAdminController : Controller
             FirstName = teacher.FirstName,
             LastName = teacher.LastName,
             Email = teacher.Email,
-            Phone = teacher.Phone
+            Phone = teacher.Phone,
+            Qualificatio = teacher.Qualification
         };
 
         using var client = _httpClient.CreateClient();
@@ -73,17 +91,31 @@ public class TeacherAdminController : Controller
     [HttpGet("edit/{teacherId}")]
     public async Task<IActionResult> Edit(int teacherId)
     {
+        var qualificationList = new List<SelectListItem>();
+
         using var client = _httpClient.CreateClient();
         var response = await client.GetAsync($"{_baseUrl}/teachers/{teacherId}");
 
         var json = await response.Content.ReadAsStringAsync();
-        var teacher = JsonSerializer.Deserialize<PersonPostViewModel>(json, _options);
+        var teacher = JsonSerializer.Deserialize<TeacherPostViewModel>(json, _options);
+
+        response = await client.GetAsync($"{_baseUrl}/qualifications");
+
+        json = await response.Content.ReadAsStringAsync();
+        var qualifications = JsonSerializer.Deserialize<List<QualificationModel>>(json, _options);
+
+        foreach (var qualification in qualifications)
+        {
+            qualificationList.Add(new SelectListItem { Value = qualification.Qualification, Text = qualification.Qualification });
+        }
+
+        teacher.Qualifications = qualificationList;
 
         return View("Edit", teacher);
     }
 
     [HttpPost("edit/{teacherId}")]
-    public async Task<IActionResult> Edit(int teacherId, PersonPostViewModel teacher)
+    public async Task<IActionResult> Edit(int teacherId, TeacherPostViewModel teacher)
     {
         if (!ModelState.IsValid) return View("Edit", teacher);
 
@@ -93,7 +125,8 @@ public class TeacherAdminController : Controller
             FirstName = teacher.FirstName,
             LastName = teacher.LastName,
             Email = teacher.Email,
-            Phone = teacher.Phone
+            Phone = teacher.Phone,
+            Qualificatio = teacher.Qualification
         };
 
         using var client = _httpClient.CreateClient();

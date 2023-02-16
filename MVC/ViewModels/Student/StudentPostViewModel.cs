@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace WestCoastEducation.web.ViewModels;
 
-public class TeacherPostViewModel
+public class StudentPostViewModel
 {
     [Required(ErrorMessage = "Ålder måste finnas")]
     [DisplayName("Ålder")]
@@ -26,6 +26,6 @@ public class TeacherPostViewModel
     [DisplayName("Telefonnummer")]
     public string Phone { get; set; }
 
-    public string Qualification { get; set; }
-    public List<SelectListItem> Qualifications { get; set; }
+    public string Course { get; set; }
+    public List<SelectListItem> Courses { get; set; }
 }

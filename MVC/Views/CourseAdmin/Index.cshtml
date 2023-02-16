@@ -9,11 +9,10 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th>Kurs</th>
-                    <th>Kurs Nr</th>
                     <th>Kurstitel</th>
+                    <th>Kurs Nr</th>
                     <th>Kursstart</th>
-                    <th>Kurslängd</th>
+                    <th>Kursslut</th>                    
                     <th></th>
                 </tr>
             </thead>
@@ -29,7 +28,7 @@
                         <td>@course.CourseNumber</td>
                         <td>@course.CourseTitle</td>
                         <td>@course.CourseStartDate</td>
-                        <td>@course.CourseEndDate Veckor</td>
+                        <td>@course.CourseEndDate</td>
                         <td>
                             <a class="icon" asp-action="Delete" asp-controller=CourseAdmin
                             asp-route-courseId="@course.Id">

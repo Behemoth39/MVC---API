@@ -5,7 +5,7 @@ namespace WestCoastEducation.web.Models;
 public class CourseModel
 {
     [Key]
-    public int CourseId { get; set; }
+    public int Id { get; set; }
     public string CourseName { get; set; } = "";
     public string CourseNumber { get; set; } = "";
     public string CourseTitle { get; set; } = "";

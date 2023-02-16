@@ -1,4 +1,4 @@
-﻿@model IList<WestCoastEducation.web.ViewModels.PersonViewModel>
+﻿@model IList<WestCoastEducation.web.ViewModels.StudentListViewModel>
 
 @{
     ViewBag.Pagetitle = "Students";
@@ -13,9 +13,9 @@
         <p>
             @foreach (var student in Model)
             {
-                    <p><a asp-action="details" asp-route-studentId="@student.Id">
+                <p><a asp-action="details" asp-route-studentId="@student.Id">
                         @student.FirstName - @student.LastName
-                    </a></p>
+                </a></p>
             }
         </p>
     </div>

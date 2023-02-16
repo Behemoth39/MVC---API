@@ -1,4 +1,4 @@
-﻿@model IList<WestCoastEducation.web.ViewModels.PersonViewModel>
+﻿@model IList<WestCoastEducation.web.ViewModels.StudentListViewModel>
 @{
     ViewBag.Pagetitle = "Student Admin";
 }
@@ -14,6 +14,7 @@
                     <th>Efternamn</th>
                     <th>Email</th>
                     <th>Telefonnummer</th>
+                    <th>Kurs</th>
                     <th></th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                         <td>@student.LastName</td>
                         <td>@student.Email</td>
                         <td>@student.Phone</td>
+                        <td>@student.Course</td>
                         <td>
                             <a class="icon" asp-action="Delete" asp-controller=StudentAdmin
                             asp-route-studentId="@student.Id">
