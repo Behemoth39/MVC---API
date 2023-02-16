@@ -13,7 +13,13 @@
         <p>Förnamne - @Model.FirstName</p>
         <p>Efternamn - @Model.LastName</p>
         <p>Email - @Model.Email</p>
-        <p>Telefonnummer - @Model.Phone</p>                          
+        <p>Telefonnummer - @Model.Phone</p>
+        <p>Konpetenser - @foreach (var qualification in Model.Qualifications)
+                {
+                    @qualification.Qualification
+
+                        <br>                               
+                }</p>                               
     </div>
     <a asp-action="Index">Tillbaka</a>
     </div>

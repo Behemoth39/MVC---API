@@ -1,37 +1,30 @@
 [
   {
     "Id": 1,
-    "teacherId": 1,
     "qualification": "Programming"
   },
   {
     "Id": 2,
-    "teacherId": 1,
     "qualification": "Business"
   },
   {
     "Id": 3,
-    "teacherId": 2,
     "qualification": "Welding"
   },
   {
     "Id": 4,
-    "teacherId": 2,
     "qualification": "Technician"
   },
   {
     "Id": 5,
-    "teacherId": 3,
     "qualification": "Plumber"
   },
   {
     "Id": 6,
-    "teacherId": 3,
     "qualification": "Roofer"
   },
   {
     "Id": 7,
-    "teacherId": 3,
     "qualification": "Carpenter"
   }
 ]

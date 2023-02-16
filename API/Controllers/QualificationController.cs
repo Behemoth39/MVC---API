@@ -95,7 +95,7 @@ namespace westcoasteducation.api.Controllers
             return StatusCode(500, "Internal Server Error");
         }
 
-        [HttpPatch("qualToTeacher/{qualId}/{teacherId}")] // namnge bättre
+        [HttpPatch("qualToTeacher/{qualId}/{teacherId}")]
         public async Task<ActionResult> AddQualificationToTeacher(int qualId, int teacherId)
         {
             var qualification = await _context.Qualifications.FindAsync(qualId);
@@ -104,7 +104,10 @@ namespace westcoasteducation.api.Controllers
             var teacher = await _context.Teachers.FindAsync(teacherId);
             if (teacher is null) return BadRequest($"Kunde inte hitta läraren i systemet");
 
-            // sätt värdet här
+            IList<TeacherModel> teacherList = new List<TeacherModel>();
+            teacherList.Add(teacher);
+
+            qualification.Teachers = teacherList;
 
             _context.Qualifications.Update(qualification);
             if (await _context.SaveChangesAsync() > 0)
@@ -115,7 +118,7 @@ namespace westcoasteducation.api.Controllers
             return StatusCode(500, "Internal Server Error");
         }
 
-        [HttpPatch("qualFromTeacher/{qualId}/{teacherId}")] // namnge bättre
+        [HttpPatch("qualFromTeacher/{qualId}/{teacherId}")] // not working
         public async Task<ActionResult> RemoveQualificationFromTeacher(int qualId, int teacherId)
         {
             var qualification = await _context.Qualifications.FindAsync(qualId);
@@ -124,7 +127,7 @@ namespace westcoasteducation.api.Controllers
             var teacher = await _context.Teachers.FindAsync(teacherId);
             if (teacher is null) return BadRequest($"Kunde inte hitta läraren i systemet");
 
-            // sätt värdet här
+            //qualification.Teachers = ?; // ska jag skicka in en lista eller enstaka objekt?
 
             _context.Qualifications.Update(qualification);
             if (await _context.SaveChangesAsync() > 0)

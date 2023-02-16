@@ -29,7 +29,7 @@ namespace MVC.Controllers
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var teachers = JsonSerializer.Deserialize<IList<PersonViewModel>>(json, _options);
+            var teachers = JsonSerializer.Deserialize<IList<TeacherListViewModel>>(json, _options);
 
             return View("Index", teachers);
         }
@@ -44,7 +44,7 @@ namespace MVC.Controllers
 
             var json = await response.Content.ReadAsStringAsync();
 
-            var teachers = JsonSerializer.Deserialize<PersonViewModel>(json, _options);
+            var teachers = JsonSerializer.Deserialize<TeacherListViewModel>(json, _options);
             return View("teacher", teachers);
         }
     }

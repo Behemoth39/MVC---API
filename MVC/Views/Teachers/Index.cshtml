@@ -1,4 +1,4 @@
-﻿@model IList<WestCoastEducation.web.ViewModels.PersonViewModel>
+﻿@model IList<WestCoastEducation.web.ViewModels.TeacherListViewModel>
 
 @{
     ViewBag.Pagetitle = "Teachers";
@@ -9,15 +9,14 @@
         <img src="~/Media/school.png" alt="School" height="800" width="800" />
     </div>
     <div class="main-content-row-2">
-        <h1>Lärare</h1>
-        <p>Detta ser inte snyggt ut.......</p>        
-        <ul>
+        <h1>Lärare</h1>               
+        <p>
             @foreach (var teacher in Model)
             {
-                <p><a asp-action="details" asp-route-teacherId="@teacher.Id">
+                    <p><a asp-action="details" asp-route-teacherId="@teacher.Id">
                         @teacher.FirstName - @teacher.LastName
-                </a></p>
+                    </a></p>
             }
-        </ul>
+        </p>
     </div>
 </section>

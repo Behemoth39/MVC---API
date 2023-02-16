@@ -28,6 +28,7 @@ public class TeacherController : ControllerBase
             LastName = t.LastName,
             Email = t.Email,
             Phone = t.Phone,
+            Qualifications = t.Qualifications!.Select(qlv => new QualificationListVIewModel { Qualification = qlv.Qualification }).ToList(),
             Courses = t.Courses!.Select(clv => new CourseListViewModel { CourseTitle = clv.CourseTitle }).ToList()
         })
         .ToListAsync();
@@ -48,6 +49,7 @@ public class TeacherController : ControllerBase
             LastName = t.LastName,
             Email = t.Email,
             Phone = t.Phone,
+            Qualifications = t.Qualifications!.Select(qlv => new QualificationListVIewModel { Qualification = qlv.Qualification }).ToList(),
             Courses = t.Courses!.Select(clv => new CourseListViewModel { CourseTitle = clv.CourseTitle }).ToList()
         })
         .SingleOrDefaultAsync(t => t.Id == id);
@@ -68,6 +70,7 @@ public class TeacherController : ControllerBase
             LastName = t.LastName,
             Email = t.Email,
             Phone = t.Phone,
+            Qualifications = t.Qualifications!.Select(qlv => new QualificationListVIewModel { Qualification = qlv.Qualification }).ToList(),
             Courses = t.Courses!.Select(clv => new CourseListViewModel { CourseTitle = clv.CourseTitle }).ToList()
         })
         .SingleOrDefaultAsync(t => t.Email!.ToUpper().Trim() == email.ToUpper().Trim());
