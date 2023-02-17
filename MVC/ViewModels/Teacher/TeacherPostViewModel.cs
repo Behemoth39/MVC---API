@@ -25,7 +25,4 @@ public class TeacherPostViewModel
     [Required(ErrorMessage = "Telefonnummer måste finnas")]
     [DisplayName("Telefonnummer")]
     public string Phone { get; set; }
-
-    public string Qualification { get; set; }
-    public List<SelectListItem> Qualifications { get; set; }
 }

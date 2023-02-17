@@ -88,7 +88,6 @@ public class TeacherController : ControllerBase
         if (!ModelState.IsValid) return BadRequest("Information saknas, kontrollera så att allt stämmer");
 
         var exists = await _context.Teachers.SingleOrDefaultAsync(s => s.Email!.ToUpper().Trim() == model.Email!.ToUpper().Trim());
-
         if (exists is not null) return BadRequest($"En lärare med email {model.Email} finns redan");
 
         var teacher = new TeacherModel

@@ -85,8 +85,10 @@ public class StudentController : ControllerBase
         if (!ModelState.IsValid) return BadRequest("Information saknas, kontrollera så att allt stämmer");
 
         var exists = await _context.Students.SingleOrDefaultAsync(s => s.Email!.ToUpper().Trim() == model.Email!.ToUpper().Trim());
-
         if (exists is not null) return BadRequest($"En student med email {model.Email} finns redan");
+
+        var course = await _context.Courses.SingleOrDefaultAsync(s => s.CourseTitle!.ToUpper().Trim() == model.Course.ToUpper().Trim());
+        if (course is null) return NotFound($"{model.Course} finns inte");
 
         var student = new StudentModel
         {
@@ -94,7 +96,8 @@ public class StudentController : ControllerBase
             FirstName = model.FirstName,
             LastName = model.LastName,
             Email = model.Email,
-            Phone = model.Phone
+            Phone = model.Phone,
+            Course = course
         };
 
         await _context.Students.AddAsync(student);
@@ -116,11 +119,15 @@ public class StudentController : ControllerBase
         var student = await _context.Students.FindAsync(id);
         if (student is null) return BadRequest($"Studenten {model.FirstName} {model.LastName} finns inte");
 
+        var course = await _context.Courses.SingleOrDefaultAsync(s => s.CourseTitle!.ToUpper().Trim() == model.Course.ToUpper().Trim());
+        if (course is null) return NotFound($"{model.Course} finns inte");
+
         student.Age = model.Age;
         student.FirstName = model.FirstName;
         student.LastName = model.LastName;
         student.Email = model.Email;
         student.Phone = model.Phone;
+        student.Course = course;
 
         _context.Students.Update(student);
         if (await _context.SaveChangesAsync() > 0)

@@ -18,4 +18,5 @@ public class StudentAddUpdateViewModel
 
     [Required(ErrorMessage = "Telefonnummer måste finnas")]
     public string Phone { get; set; }
+    public string Course { get; set; }
 }

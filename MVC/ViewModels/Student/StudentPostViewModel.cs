@@ -26,6 +26,7 @@ public class StudentPostViewModel
     [DisplayName("Telefonnummer")]
     public string Phone { get; set; }
 
+    [DisplayName("Kurs")]
     public string Course { get; set; }
     public List<SelectListItem> Courses { get; set; }
 }

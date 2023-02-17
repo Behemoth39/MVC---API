@@ -40,24 +40,9 @@ public class TeacherAdminController : Controller
     }
 
     [HttpGet("create")]
-    public async Task<IActionResult> Create()
+    public IActionResult Create()
     {
-        var qualificationList = new List<SelectListItem>();
-
-        using var client = _httpClient.CreateClient();
-
-        var response = await client.GetAsync($"{_baseUrl}/qualifications");
-        if (!response.IsSuccessStatusCode) return Content("Ett fel har uppstått!");
-        var json = await response.Content.ReadAsStringAsync();
-        var qualifications = JsonSerializer.Deserialize<List<QualificationModel>>(json, _options);
-
-        foreach (var qualification in qualifications)
-        {
-            qualificationList.Add(new SelectListItem { Value = qualification.Qualification, Text = qualification.Qualification });
-        }
-
         var teacher = new TeacherPostViewModel();
-        teacher.Qualifications = qualificationList;
         return View("Create", teacher);
     }
 
@@ -72,8 +57,7 @@ public class TeacherAdminController : Controller
             FirstName = teacher.FirstName,
             LastName = teacher.LastName,
             Email = teacher.Email,
-            Phone = teacher.Phone,
-            Qualificatio = teacher.Qualification
+            Phone = teacher.Phone
         };
 
         using var client = _httpClient.CreateClient();
@@ -99,18 +83,6 @@ public class TeacherAdminController : Controller
         var json = await response.Content.ReadAsStringAsync();
         var teacher = JsonSerializer.Deserialize<TeacherPostViewModel>(json, _options);
 
-        response = await client.GetAsync($"{_baseUrl}/qualifications");
-
-        json = await response.Content.ReadAsStringAsync();
-        var qualifications = JsonSerializer.Deserialize<List<QualificationModel>>(json, _options);
-
-        foreach (var qualification in qualifications)
-        {
-            qualificationList.Add(new SelectListItem { Value = qualification.Qualification, Text = qualification.Qualification });
-        }
-
-        teacher.Qualifications = qualificationList;
-
         return View("Edit", teacher);
     }
 
@@ -125,8 +97,7 @@ public class TeacherAdminController : Controller
             FirstName = teacher.FirstName,
             LastName = teacher.LastName,
             Email = teacher.Email,
-            Phone = teacher.Phone,
-            Qualificatio = teacher.Qualification
+            Phone = teacher.Phone
         };
 
         using var client = _httpClient.CreateClient();
