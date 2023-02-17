@@ -127,7 +127,7 @@ namespace westcoasteducation.api.Controllers
             var teacher = await _context.Teachers.FindAsync(teacherId);
             if (teacher is null) return BadRequest($"Kunde inte hitta läraren i systemet");
 
-            //qualification.Teachers = ?; // ska jag skicka in en lista eller enstaka objekt?
+            //ska jag skicka in en lista eller enstaka objekt?
 
             _context.Qualifications.Update(qualification);
             if (await _context.SaveChangesAsync() > 0)

@@ -7,7 +7,6 @@
     </div>
     <div class="main-content-row-2">
     <h1>@Model!.FirstName - @Model!.LastName </h1>
-    <p>Denna sidan behöver en annan layout</p>
     <div>
         <p>Ålder - @Model.Age</p>
         <p>Förnamne - @Model.FirstName</p>
@@ -15,11 +14,11 @@
         <p>Email - @Model.Email</p>
         <p>Telefonnummer - @Model.Phone</p>
         <p>Konpetenser - @foreach (var qualification in Model.Qualifications)
-                {
-                    @qualification.Qualification
-
-                        <br>                               
-                }</p>                               
+            {
+                @qualification.Qualification
+                <br>                               
+            }
+        </p>                               
     </div>
     <a asp-action="Index">Tillbaka</a>
     </div>

@@ -4,7 +4,6 @@ using System.Text;
 using static System.Net.Mime.MediaTypeNames;
 using WestCoastEducation.web.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using WestCoastEducation.web.Models;
 
 namespace WestCoastEducation.web.Controllers;
 

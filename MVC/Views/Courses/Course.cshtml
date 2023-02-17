@@ -7,7 +7,6 @@
     </div>
     <div class="main-content-row-2">
     <h1>Kursinfo - @Model!.CourseTitle</h1>
-    <p>Denna sidan behöver en annan layout</p>
     <div>
         <p>Status - @Model.Status</p>
         <p>Kurstitle - @Model.CourseTitle</p>
@@ -18,9 +17,9 @@
         <p>Studenter - @foreach (var student in Model.Students)
                 {
                     @student.Name
-
-                        <br>                               
-                }</p>       
+                    <br>                               
+                }
+        </p>       
     </div>
     <a asp-action="Index">Tillbaka</a>
 </section>
